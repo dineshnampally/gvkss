@@ -9,7 +9,7 @@ const AboutHero = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-16 py-20 flex flex-col lg:flex-row items-center justify-between space-y-12 lg:space-y-24">
         {/* Text Section */}
         <div className="lg:w-1/2 text-center lg:text-left px-4">
-          <h2 className="text-4xl text-gray-400 font-extralight sm:text-8xl">
+          <h2 className="text-4xl text-gray-400 font-ex sm:text-8xl">
             About <span className="bg-clip-text text-transparent [background-image:linear-gradient(to_left,_#ff6ec4_32.5px,_#ffb86c_91px,_#faff00_100%)] font-extrabold">GVKSS</span>
           </h2>
           <p className="mt-8 text-2xl text-gray-800">

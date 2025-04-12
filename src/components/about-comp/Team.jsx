@@ -1,5 +1,4 @@
 import React from 'react';
-import meeting from '../../assets/meeting.mp4';
 import { FaCheck } from 'react-icons/fa';
 
 const Team = () => {
@@ -37,7 +36,7 @@ const Team = () => {
       {/* Video Section */}
       <div className="w-full lg:w-1/2 h-[300px] sm:h-[400px] lg:h-[80vh] relative mb-8 lg:mb-0 rounded-xl overflow-hidden">
         <video
-          src={meeting}
+          src='https://cdn.pixabay.com/video/2017/03/08/8252-207598592.mp4'
           muted
           loop
           autoPlay
