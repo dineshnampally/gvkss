@@ -19,9 +19,9 @@ const Footer = () => {
       {/* Social Icons */}
       <nav>
         <div className="flex gap-6 text-2xl">
-          <Link to="#"><AiFillLinkedin /></Link>
-          <Link to="#"><AiFillInstagram /></Link>
-          <Link to="#"><FaXTwitter /></Link>
+          <Link to="https://www.linkedin.com/company/gvkss-software-private-limited/"><AiFillLinkedin /></Link>
+          <Link to="https://www.instagram.com/gvksssoftwareprivatelimited/"><AiFillInstagram /></Link>
+          <Link to="https://x.com/GVKSSCEO"><FaXTwitter /></Link>
           <a href="mailto:gvkssceo@gvkss.com" target="_blank" rel="noopener noreferrer">
             <SiGmail />
           </a>

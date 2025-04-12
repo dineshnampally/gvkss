@@ -115,7 +115,7 @@ const CareerForm = () => {
           <button
             type="submit"
             disabled={loading}
-            className={`w-full p-4 text-xl text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 ${
+            className={`w-full p-4 text-xl text-black border rounded-lg hover:bg-blue-700 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300 ${
               loading ? 'bg-gray-400 cursor-not-allowed' : ''
             }`}
           >
