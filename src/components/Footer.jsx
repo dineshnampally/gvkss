@@ -3,17 +3,29 @@ import { AiFillInstagram, AiFillLinkedin } from 'react-icons/ai'
 import { FaWhatsappSquare } from 'react-icons/fa'
 import { FaXTwitter, FaYoutube } from 'react-icons/fa6'
 import { SiGmail } from 'react-icons/si'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 const Footer = () => {
+  const location = useLocation();
+
+  const handleLinkClick = (e, path) => {
+    if (location.pathname === path) {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <footer className="w-full bg-gray-800 text-white py-10 px-6 flex flex-col items-center gap-6 md:gap-10">
       
       {/* Navigation Links */}
       <nav className="flex flex-col md:flex-row gap-4 text-center">
-        <Link to='/about' className='hover:underline'>About us</Link>
-        <Link to='/contact' className='hover:underline'>Contact</Link>
-        <Link to='/career' className='hover:underline'>Careers</Link>
+        <Link to='/about' className='hover:underline' onClick={(e) => handleLinkClick(e, '/about')}>About us</Link>
+        <Link to='/contact' className='hover:underline' onClick={(e) => handleLinkClick(e, '/contact')}>Contact</Link>
+        <Link to='/career' className='hover:underline' onClick={(e) => handleLinkClick(e, '/career')}>Careers</Link>
       </nav>
 
       {/* Social Icons */}
