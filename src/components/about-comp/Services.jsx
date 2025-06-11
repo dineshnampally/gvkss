@@ -20,6 +20,7 @@ const Services = () => {
 
   return (
     <div
+      id="services-section"
       className="relative bg-no-repeat bg-cover bg-center min-h-screen w-full pointer-events-auto"
       style={{ backgroundImage: `url(${image})` }}
     >
@@ -31,7 +32,7 @@ const Services = () => {
           <h1 className="text-5xl font-bold text-white mb-4">
             Our Services
           </h1>
-          <div className="w-20 h-1 bg-[#67B047] mx-auto"></div>
+          <div className="w-11/12 md:w-3/4 lg:w-1/2 h-1 bg-[#67B047] mx-auto"></div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

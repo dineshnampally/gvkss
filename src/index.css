@@ -1,20 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap');
+
 @import "tailwindcss";
 /*@import "./node_modules/preline/variants.css";*/
 
 @import '../node_modules/preline/variants.css';
 
-@font-face {
-  font-family: 'MuseoSans';
-  src: url('/fonts/museo-sans/Museo100-Regular.otf') format('opentype');
-  font-weight: 100;
-  font-style: normal;
-}
-.museo-font {
-  font-family: 'MuseoSans', sans-serif;
+:root {
+  --font-primary: 'Plus Jakarta Sans', sans-serif;
+  --font-heading: 'Outfit', sans-serif;
 }
 
 body {
-  font-family: 'MuseoSans', sans-serif;
+  font-family: var(--font-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 * {

@@ -8,9 +8,12 @@ import Career from './components/Career'
 import About from './components/About'
 import Contact from './components/Contact'
 import Banner from './components/home-comp/Banner'
+import ScrollToTop from './components/ScrollToTop'
+
 const App = () => {
   return (
     <>
+      <ScrollToTop />
       <Header/>
         <Routes>
           <Route path='/' element={<Home/>}/>

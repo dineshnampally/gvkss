@@ -20,8 +20,9 @@ const Footer = () => {
       <nav>
         <div className="flex gap-6 text-2xl">
           <Link to="https://www.linkedin.com/company/gvkss-software-private-limited/"><AiFillLinkedin /></Link>
-          <Link to="https://www.instagram.com/gvksssoftwareprivatelimited/"><AiFillInstagram /></Link>
+          <Link to="https://www.instagram.com/gvkssdigital/"><AiFillInstagram /></Link>
           <Link to="https://x.com/GVKSSCEO"><FaXTwitter /></Link>
+          <Link to="https://www.youtube.com/@GVKSSAIDIGITALSOLUTION"><FaYoutube /></Link>
           <a href="mailto:gvkssceo@gvkss.com" target="_blank" rel="noopener noreferrer">
             <SiGmail />
           </a>

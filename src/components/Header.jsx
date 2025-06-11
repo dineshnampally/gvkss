@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { FiMenu } from 'react-icons/fi';
-import logo from '../assets/logo.jpg';
 import { motion, AnimatePresence } from 'framer-motion';
+import logo from '../assets/logo.jpg';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -20,15 +20,11 @@ const Header = () => {
 
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-
       if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
-        // Scrolling down
         setIsHeaderVisible(false);
       } else {
-        // Scrolling up
         setIsHeaderVisible(true);
       }
-
       lastScrollY.current = currentScrollY;
     };
 
@@ -53,8 +49,48 @@ const Header = () => {
   };
 
   const mobileMenuVariants = {
-    open: { opacity: 1, height: 'auto', transition: { duration: 0.3 } },
-    closed: { opacity: 0, height: 0, transition: { duration: 0.3 } },
+    open: { 
+      opacity: 1,
+      height: 'auto',
+      y: 0,
+      scale: 1,
+      boxShadow: '0 8px 32px 0 rgba(60,60,120,0.12)',
+      transition: {
+        type: 'spring',
+        stiffness: 320,
+        damping: 28,
+        mass: 0.7,
+        staggerChildren: 0.12
+      }
+    },
+    closed: { 
+      opacity: 0,
+      height: 0,
+      y: -60,
+      scale: 0.98,
+      boxShadow: '0 0px 0px 0 rgba(60,60,120,0)',
+      transition: {
+        type: 'spring',
+        stiffness: 320,
+        damping: 30,
+        mass: 0.7,
+        staggerChildren: 0.07,
+        staggerDirection: -1
+      }
+    },
+  };
+
+  const menuItemVariants = {
+    open: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.2 }
+    },
+    closed: { 
+      opacity: 0, 
+      y: -10,
+      transition: { duration: 0.2 }
+    }
   };
 
   return (
@@ -64,48 +100,62 @@ const Header = () => {
       animate={isHeaderVisible ? 'visible' : 'hidden'}
       initial="visible"
     >
-      <div className="w-screen flex flex-row justify-between items-center py-1 px-4 bg-[#333FAF] text-white text-[10px]">
-        <h6 className="text-center">The Power In Your Hand</h6>
-        <p className="text-center">
-          Office Mob: <span>7441 &nbsp; 143 &nbsp; 143 &nbsp; &nbsp; </span>
-        </p>
-      </div>
-
       <div ref={navRef}>
-        <nav className="bg-[#FBFAFA] border-b-2 border-gray-400 w-full">
+        <nav className="bg-white/80 backdrop-blur-md border-b border-gray-200/50 w-full shadow-sm">
           <div className="max-w-screen-xl mx-auto flex justify-between items-center px-4 py-2 flex-col sm:flex-row">
             {/* Logo */}
-            <div className="mb-1 sm:mb-0">
+            <motion.div 
+              className="mb-1 sm:mb-0"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
               <NavLink to="/" onClick={() => setMenuOpen(false)}>
-                <img src={logo} alt="Store Logo" className="h-24 object-cover" />
+                <img src={logo} alt="Store Logo" className="h-20 object-cover" />
               </NavLink>
-            </div>
+            </motion.div>
 
             {/* Desktop Menu */}
-            <div className="hidden lg:flex space-x-4 text-lg gap-10 font-extrabold">
+            <div className="hidden lg:flex space-x-4 text-lg gap-10 font-medium">
               {['/', '/contact', '/about', '/career'].map((path, index) => {
                 const labels = ['Home', 'Contact', 'About', 'Career'];
                 return (
-                  <NavLink
+                  <motion.div
                     key={path}
-                    to={path}
-                    className={({ isActive }) =>
-                      isActive
-                        ? 'text-blue-600 font-semibold'
-                        : 'text-gray-700 hover:text-blue-500'
-                    }
+                    whileHover={{ y: -2 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   >
-                    {labels[index]}
-                  </NavLink>
+                    <NavLink
+                      to={path}
+                      className={({ isActive }) =>
+                        `relative px-2 py-1 ${
+                          isActive
+                            ? 'text-blue-600'
+                            : 'text-gray-600 hover:text-blue-500'
+                        }`
+                      }
+                    >
+                      {labels[index]}
+                      {location.pathname === path && (
+                        <motion.div
+                          className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600"
+                          layoutId="underline"
+                        />
+                      )}
+                    </NavLink>
+                  </motion.div>
                 );
               })}
             </div>
 
             {/* Mobile Menu Icon */}
             <div className="lg:hidden flex justify-end w-full sm:w-auto">
-              <button onClick={() => setMenuOpen(!menuOpen)} className="text-2xl text-gray-700">
+              <motion.button
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setMenuOpen(!menuOpen)}
+                className="text-2xl text-gray-600 p-2 rounded-lg hover:bg-gray-100"
+              >
                 <FiMenu />
-              </button>
+              </motion.button>
             </div>
           </div>
 
@@ -113,7 +163,7 @@ const Header = () => {
           <AnimatePresence>
             {menuOpen && (
               <motion.div
-                className="flex flex-col items-center bg-[#FBFAFA] py-2 lg:hidden font-extrabold overflow-hidden"
+                className="flex flex-col items-center bg-white/80 backdrop-blur-md py-2 lg:hidden font-medium overflow-hidden"
                 variants={mobileMenuVariants}
                 initial="closed"
                 animate="open"
@@ -122,17 +172,26 @@ const Header = () => {
                 {['/', '/contact', '/about', '/career'].map((path, index) => {
                   const labels = ['Home', 'Contact', 'About', 'Career'];
                   return (
-                    <NavLink
+                    <motion.div
                       key={path}
-                      to={path}
-                      onClick={() => setMenuOpen(false)}
-                      className={({ isActive }) =>
-                        (isActive ? 'text-blue-600 font-semibold' : 'text-gray-700') +
-                        ' py-1'
-                      }
+                      variants={menuItemVariants}
+                      whileHover={{ x: 5 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
                     >
-                      {labels[index]}
-                    </NavLink>
+                      <NavLink
+                        to={path}
+                        onClick={() => setMenuOpen(false)}
+                        className={({ isActive }) =>
+                          `block px-4 py-2 ${
+                            isActive
+                              ? 'text-blue-600'
+                              : 'text-gray-600 hover:text-blue-500'
+                          }`
+                        }
+                      >
+                        {labels[index]}
+                      </NavLink>
+                    </motion.div>
                   );
                 })}
               </motion.div>

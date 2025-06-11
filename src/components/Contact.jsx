@@ -60,7 +60,7 @@ const Contact = () => {
       {/* Header Section */}
       <div className="relative mb-16">
         <h2 className="text-4xl sm:text-5xl font-bold text-center text-gray-800 mb-6">Contact Us</h2>
-        <div className="w-24 h-1.5 bg-blue-600 mx-auto rounded-full"></div>
+        <div className="w-11/12 md:w-3/4 lg:w-1/2 h-1.5 bg-blue-600 mx-auto rounded-full"></div>
       </div>
 
       {/* Main content - Contact form and Let's Connect */}
@@ -93,7 +93,7 @@ const Contact = () => {
             
             <form className="w-full max-w-md mx-auto space-y-6" onSubmit={handleSubmit}>
               <div className="group">
-                <div className="flex items-center border-b-2 border-gray-200 pb-2 transition-colors duration-300 group-focus-within:border-blue-500">
+                <div className="flex items-center border-b-2 border-gray-200 pb-2 transition-colors duration-300 group-focus-within:border-blue-500 w-11/12 md:w-3/4 lg:w-1/2 mx-auto">
                   <FaUser className="mr-3 text-gray-500 group-focus-within:text-blue-500 transition-colors duration-300" />
                   <input
                     name="fullname"
@@ -108,7 +108,7 @@ const Contact = () => {
               </div>
 
               <div className="group">
-                <div className="flex items-center border-b-2 border-gray-200 pb-2 transition-colors duration-300 group-focus-within:border-blue-500">
+                <div className="flex items-center border-b-2 border-gray-200 pb-2 transition-colors duration-300 group-focus-within:border-blue-500 w-11/12 md:w-3/4 lg:w-1/2 mx-auto">
                   <FaEnvelope className="mr-3 text-gray-500 group-focus-within:text-blue-500 transition-colors duration-300" />
                   <input
                     name="email"
@@ -123,7 +123,7 @@ const Contact = () => {
               </div>
 
               <div className="group">
-                <div className="flex items-start border-b-2 border-gray-200 pb-2 transition-colors duration-300 group-focus-within:border-blue-500">
+                <div className="flex items-start border-b-2 border-gray-200 pb-2 transition-colors duration-300 group-focus-within:border-blue-500 w-11/12 md:w-3/4 lg:w-1/2 mx-auto">
                   <FaComment className="mr-3 text-gray-500 mt-[6px] group-focus-within:text-blue-500 transition-colors duration-300" />
                   <textarea
                     name="message"
